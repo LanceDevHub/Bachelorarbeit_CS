@@ -1,0 +1,14 @@
+===== Halo Benchmark (1D Ring, 2 Neighbours) =====
+Ranks                 : 1024
+Cells per message     : 256
+Variables per cell    : 3
+Doubles per message   : 768
+Bytes per message     : 6144
+Iterations            : 1000
+
+Non-blocking (Isend/Irecv):
+  Total time [s]      : min = 1.145749e-02  avg = 1.263235e-02  max = 1.402128e-02
+Persistent (Send_init/Startall):
+  Total time [s]      : min = 3.888470e-03  avg = 4.447742e-03  max = 5.134236e-03
+Speedup (based on AVG time):
+  Speedup             : 2.840 x

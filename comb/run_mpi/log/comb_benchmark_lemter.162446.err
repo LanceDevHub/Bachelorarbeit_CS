@@ -1,0 +1,34 @@
+corrupted double-linked list
+[cpu0646:44398] *** Process received signal ***
+[cpu0646:44398] Signal: Aborted (6)
+[cpu0646:44398] Signal code:  (-6)
+[cpu0646:44398] [ 0] /lib64/libpthread.so.0(+0x12990)[0x7f75ad7ab990]
+[cpu0646:44398] [ 1] /lib64/libc.so.6(gsignal+0x10f)[0x7f75ad4115af]
+[cpu0646:44398] [ 2] /lib64/libc.so.6(abort+0x127)[0x7f75ad3e4ee5]
+[cpu0646:44398] [ 3] /lib64/libc.so.6(+0x8f887)[0x7f75ad452887]
+[cpu0646:44398] [ 4] /lib64/libc.so.6(+0x96b8c)[0x7f75ad459b8c]
+[cpu0646:44398] [ 5] /lib64/libc.so.6(+0x9741c)[0x7f75ad45a41c]
+[cpu0646:44398] [ 6] /lib64/libc.so.6(+0x97579)[0x7f75ad45a579]
+[cpu0646:44398] [ 7] /lib64/libc.so.6(+0x98c40)[0x7f75ad45bc40]
+[cpu0646:44398] [ 8] /apps/easybuild/core/software/OpenMPI/5.0.3-GCC-13.3.0/lib/libopen-pal.so.80(+0x2ba28)[0x7f75ae57ea28]
+[cpu0646:44398] [ 9] /apps/easybuild/core/software/OpenMPI/5.0.3-GCC-13.3.0/lib/libopen-pal.so.80(+0x2bbab)[0x7f75ae57ebab]
+[cpu0646:44398] [10] /apps/easybuild/core/software/OpenMPI/5.0.3-GCC-13.3.0/lib/libmpi.so.40(+0x21f659)[0x7f75ae1be659]
+[cpu0646:44398] [11] /apps/easybuild/core/software/OpenMPI/5.0.3-GCC-13.3.0/lib/libmpi.so.40(+0x2075e3)[0x7f75ae1a65e3]
+[cpu0646:44398] [12] /apps/easybuild/core/software/OpenMPI/5.0.3-GCC-13.3.0/lib/libopen-pal.so.80(opal_finalize_cleanup_domain+0x4a)[0x7f75ae58776a]
+[cpu0646:44398] [13] /apps/easybuild/core/software/OpenMPI/5.0.3-GCC-13.3.0/lib/libopen-pal.so.80(opal_finalize+0x2f)[0x7f75ae57d00f]
+[cpu0646:44398] [14] /apps/easybuild/core/software/OpenMPI/5.0.3-GCC-13.3.0/lib/libmpi.so.40(ompi_rte_finalize+0x119)[0x7f75ae03a519]
+[cpu0646:44398] [15] /apps/easybuild/core/software/OpenMPI/5.0.3-GCC-13.3.0/lib/libmpi.so.40(+0xa23dc)[0x7f75ae0413dc]
+[cpu0646:44398] [16] /apps/easybuild/core/software/OpenMPI/5.0.3-GCC-13.3.0/lib/libmpi.so.40(ompi_mpi_instance_finalize+0xc5)[0x7f75ae042975]
+[cpu0646:44398] [17] /apps/easybuild/core/software/OpenMPI/5.0.3-GCC-13.3.0/lib/libmpi.so.40(ompi_mpi_finalize+0x161)[0x7f75ae0369e1]
+[cpu0646:44398] [18] /home/lemter/comb/run_mpi/comb[0x405616]
+[cpu0646:44398] [19] /lib64/libc.so.6(__libc_start_main+0xe5)[0x7f75ad3fd865]
+[cpu0646:44398] [20] /home/lemter/comb/run_mpi/comb[0x4068ce]
+[cpu0646:44398] *** End of error message ***
+--------------------------------------------------------------------------
+prterun noticed that process rank 17 with PID 44398 on node cpu0646 exited on
+signal 6 (Aborted).
+--------------------------------------------------------------------------
+
+real	0m2.497s
+user	0m21.767s
+sys	0m9.953s

@@ -1,0 +1,1 @@
+../scripts/focused_mpi_type_tests.bash

@@ -1,0 +1,84 @@
+Comb version 0.3.1
+Args  /home/lemter/comb/run_mpi/comb;1024_512_512;-divide;16_8_8;-periodic;1_1_1;-ghost;1_1_1;-vars;3;-cycles;1000;-comm;cutoff;250;-exec;enable;omp;-omp_threads;2;-comm;enable;mpi;-comm;enable;mpi_persistent;-comm;enable;mpi_partitioned;-comm;disallow;per_message_pack_fusing;-comm;disallow;message_group_pack_fusing;-exec;enable;omp;-exec;disable;seq
+Started rank 0 of 1024
+Node cpu0008
+Compiler "/apps/easybuild/core/software/OpenMPI/5.0.3-GCC-13.3.0/bin/mpicxx"
+OMP num threads     2
+OMP thread map      0;1
+Cart coords         0        0        0
+Message policy cutoff 250
+Post Recv using wait_all method
+Post Send using wait_all method
+Wait Recv using wait_all method
+Wait Send using wait_all method
+Num cycles       1000
+Num vars            3
+ghost_widths        1        1        1
+sizes            1024      512      512
+divisions          16        8        8
+periodic            1        1        1
+division map
+map                 0        0        0
+map                64       64       64
+map               128      128      128
+map               192      192      192
+map               256      256      256
+map               320      320      320
+map               384      384      384
+map               448      448      448
+map               512      512      512
+map               576                  
+map               640                  
+map               704                  
+map               768                  
+map               832                  
+map               896                  
+map               960                  
+map              1024                  
+Starting test memcpy omp dst Host src Host
+                    ,    number,  average(s),      min(s),      max(s)
+copy_sync-3-287496-8,   1024000, 0.000277038, 0.000095200, 0.006320325
+Starting test Comm mock Mesh omp Host Buffers omp Host omp Host
+          ,    number,  average(s),      min(s),      max(s)
+pre-comm  ,   1024000, 0.000126187, 0.000075020, 0.004055137
+post-recv ,   1024000, 0.000002118, 0.000000978, 0.000054826
+post-send ,   1024000, 0.000128594, 0.000082470, 0.002166053
+wait-recv ,   1024000, 0.000123398, 0.000080119, 0.002168919
+wait-send ,   1024000, 0.000001489, 0.000000670, 0.000034152
+post-comm ,   1024000, 0.000128407, 0.000075510, 0.003821301
+start-up  ,      1024, 0.005159368, 0.002061281, 0.008601665
+bench-comm,      1024, 0.695456787, 0.695418532, 0.695470541
+Starting test Comm mpi Mesh omp Host Buffers omp Host omp Host
+          ,    number,  average(s),      min(s),      max(s)
+pre-comm  ,   1024000, 0.000150596, 0.000092310, 0.003137686
+post-recv ,   1024000, 0.000006139, 0.000002630, 0.009644852
+post-send ,   1024000, 0.000242719, 0.000106030, 0.118707113
+wait-recv ,   1024000, 0.000894086, 0.000204909, 0.075213650
+wait-send ,   1024000, 0.000003056, 0.000001430, 0.010629050
+post-comm ,   1024000, 0.000165496, 0.000097690, 0.001969026
+start-up  ,      1024, 0.002619181, 0.000782660, 0.004846791
+bench-comm,      1024, 1.465945828, 1.465910308, 1.465991924
+Starting test Comm mpi_persistent Mesh omp Host Buffers omp Host omp Host
+                       ,    number,  average(s),      min(s),      max(s)
+init-persistent-comm   ,      1024, 0.000029617, 0.000012610, 0.000084600
+pre-comm               ,   1024000, 0.000141737, 0.000092700, 0.001864101
+post-recv              ,   1024000, 0.000004902, 0.000001280, 0.000099689
+post-send              ,   1024000, 0.000150982, 0.000109490, 0.004993764
+wait-recv              ,   1024000, 0.000846003, 0.000149530, 0.005068135
+wait-send              ,   1024000, 0.000002217, 0.000000360, 0.001355538
+post-comm              ,   1024000, 0.000151967, 0.000098990, 0.002428419
+cleanup-persistent-comm,      1024, 0.000012451, 0.000007920, 0.000040228
+start-up               ,      1024, 0.001744363, 0.000615489, 0.002700747
+bench-comm             ,      1024, 1.302307103, 1.302293577, 1.302311177
+Starting test Comm mpi_partitioned Mesh omp Host Buffers omp Host omp Host
+                        ,    number,  average(s),      min(s),      max(s)
+init-partitioned-commm  ,      1024, 0.000052329, 0.000041880, 0.000083200
+pre-comm                ,   1024000, 0.000147357, 0.000094100, 0.001997032
+post-recv               ,   1024000, 0.000010409, 0.000000800, 0.000135940
+post-send               ,   1024000, 0.000139075, 0.000095350, 0.003867952
+wait-recv               ,   1024000, 0.000774177, 0.000122369, 0.008305084
+wait-send               ,   1024000, 0.000002702, 0.000000370, 0.002773368
+post-comm               ,   1024000, 0.000162360, 0.000097100, 0.002345488
+cleanup-partitioned-comm,      1024, 0.000006901, 0.000004870, 0.000028006
+start-up                ,      1024, 0.001677278, 0.000732259, 0.002717042
+bench-comm              ,      1024, 1.240228357, 1.240209689, 1.240235725

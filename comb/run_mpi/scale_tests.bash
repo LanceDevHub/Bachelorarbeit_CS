@@ -1,0 +1,1 @@
+../scripts/scale_tests.bash

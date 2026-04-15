@@ -1,0 +1,1 @@
+../scripts/focused_cuda_graphs_tests.bash

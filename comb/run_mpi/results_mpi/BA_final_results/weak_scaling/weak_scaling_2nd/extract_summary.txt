@@ -1,0 +1,81 @@
+# ===== PARAMETERS =====
+# --- System/Parallelisierung ---
+# MPI ranks (processes):           128
+# Nodes:                           4
+# MPI ranks per node:              32
+# OpenMP threads per rank:         2
+# OpenMP threads per node:         64
+# Total threads (ranks*threads):   256
+# Total CPU-cores (Slurm allocation): 256
+# --- Grid-Setup ---
+# Grid total:          2048_2048_4096
+# Grid per process:    512_512_512
+# Grid division:       4_4_8
+# Vars per field:      3
+# --- Benchmark ---
+# Cycles:              1000
+#
+### Test-Variante: seq Host Buffers seq Host seq Host
+# -- MPI Standard --
+
+# -- MPI Persistent --
+
+# -- MPI Partitioned --
+
+--------------------------------------------
+### Test-Variante: omp Host Buffers seq Host seq Host
+# -- MPI Standard --
+
+# -- MPI Persistent --
+
+# -- MPI Partitioned --
+
+--------------------------------------------
+### Test-Variante: omp Host Buffers omp Host seq Host
+# -- MPI Standard --
+
+# -- MPI Persistent --
+
+# -- MPI Partitioned --
+
+--------------------------------------------
+### Test-Variante: omp Host Buffers omp Host omp Host
+# -- MPI Standard --
+Starting test Comm mpi Mesh omp Host Buffers omp Host omp Host
+          ,    number,  average(s),      min(s),      max(s)
+pre-comm  ,    128000, 0.952792273, 0.316564976, 1.409908872
+post-recv ,    128000, 0.000074664, 0.000010320, 0.007856205
+post-send ,    128000, 0.027172196, 0.007614797, 0.208995855
+wait-recv ,    128000, 0.822587425, 0.047256912, 1.916447066
+wait-send ,    128000, 0.000690854, 0.000006050, 0.022228478
+post-comm ,    128000, 1.013286371, 0.369651957, 1.433068514
+start-up  ,       128, 1.560619095, 1.546484489, 1.570508386
+bench-comm,       128, 2817.149472701, 2817.149382717, 2817.149532656
+
+# -- MPI Persistent --
+Starting test Comm mpi_persistent Mesh omp Host Buffers omp Host omp Host
+                       ,    number,  average(s),      min(s),      max(s)
+init-persistent-comm   ,       128, 0.000209857, 0.000028041, 0.017123810
+pre-comm               ,    128000, 0.952519938, 0.490865727, 1.399093551
+post-recv              ,    128000, 0.000030505, 0.000005080, 0.000144689
+post-send              ,    128000, 0.026192473, 0.007467218, 0.067507424
+wait-recv              ,    128000, 0.799867589, 0.034621220, 1.687060124
+wait-send              ,    128000, 0.000013237, 0.000001940, 0.000803781
+post-comm              ,    128000, 1.022490032, 0.507465749, 1.426592216
+cleanup-persistent-comm,       128, 0.000045382, 0.000012960, 0.000112220
+start-up               ,       128, 1.558014720, 1.540645672, 1.568876624
+bench-comm             ,       128, 2801.644937706, 2801.644866384, 2801.645019485
+
+# -- MPI Partitioned --
+Starting test Comm mpi_partitioned Mesh omp Host Buffers omp Host omp Host
+                        ,    number,  average(s),      min(s),      max(s)
+init-partitioned-commm  ,       128, 0.000100053, 0.000093480, 0.000137340
+pre-comm                ,    128000, 0.956847203, 0.311511696, 1.402129364
+post-recv               ,    128000, 0.000052848, 0.000007149, 0.000175620
+post-send               ,    128000, 0.026341797, 0.008224010, 0.067335814
+wait-recv               ,    128000, 0.795416178, 0.037826011, 1.826004222
+wait-send               ,    128000, 0.000387865, 0.000001890, 0.026967992
+post-comm               ,    128000, 1.022003093, 0.468279341, 1.425496720
+cleanup-partitioned-comm,       128, 0.000037031, 0.000011460, 0.000081520
+start-up                ,       128, 1.557199281, 1.545870963, 1.565903034
+bench-comm              ,       128, 2801.588549217, 2801.588482577, 2801.588637761

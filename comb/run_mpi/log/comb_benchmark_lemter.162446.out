@@ -1,0 +1,42 @@
+--- Initializing Environment for Comb Benchmarks on Mogon ---
+Job-ID: 162446
+Datum: Tue Mar 10 12:52:54 CET 2026
+Hostnamen der zugewiesenen Knoten: cpu[0646-0647]
+ ./basic_persistent_partitioned_tests.bash 2 64 4 4 4
+mpiexec --bind-to core --map-by slot:PE=2 -np 64 /home/lemter/comb/run_mpi/comb 256_256_256 -divide 4_4_4 -periodic 1_1_1 -ghost 1_1_1 -vars 3 -cycles 10 -comm cutoff 250 -exec enable omp -omp_threads 2 -comm enable mpi -comm enable mpi_persistent -comm enable mpi_partitioned -comm disallow per_message_pack_fusing -comm disallow message_group_pack_fusing -exec enable omp -exec disable seq
+Comb version 0.3.1
+Args  /home/lemter/comb/run_mpi/comb;256_256_256;-divide;4_4_4;-periodic;1_1_1;-ghost;1_1_1;-vars;3;-cycles;10;-comm;cutoff;250;-exec;enable;omp;-omp_threads;2;-comm;enable;mpi;-comm;enable;mpi_persistent;-comm;enable;mpi_partitioned;-comm;disallow;per_message_pack_fusing;-comm;disallow;message_group_pack_fusing;-exec;enable;omp;-exec;disable;seq
+Started rank 0 of 64
+Node cpu0646
+Compiler "/apps/easybuild/core/software/OpenMPI/5.0.3-GCC-13.3.0/bin/mpicxx"
+OMP num threads     2
+OMP thread map      0;1
+Cart coords         0        0        0
+Message policy cutoff 250
+Post Recv using wait_all method
+Post Send using wait_all method
+Wait Recv using wait_all method
+Wait Send using wait_all method
+Num cycles         10
+Num vars            3
+ghost_widths        1        1        1
+sizes             256      256      256
+divisions           4        4        4
+periodic            1        1        1
+division map
+map                 0        0        0
+map                64       64       64
+map               128      128      128
+map               192      192      192
+map               256      256      256
+Starting test memcpy omp dst Host src Host
+Starting test Comm mock Mesh omp Host Buffers omp Host omp Host
+Starting test Comm mpi Mesh omp Host Buffers omp Host omp Host
+Starting test Comm mpi_persistent Mesh omp Host Buffers omp Host omp Host
+Starting test Comm mpi_partitioned Mesh omp Host Buffers omp Host omp Host
+benchmarks done
+Relevanten Daten befinden sich in results_mpi/run_256_256_256_4_4_4_10_20260310_125257/
+Auszug der Summary-Daten inkl. Parametern: results_mpi/run_256_256_256_4_4_4_10_20260310_125257/extract_summary.txt
+--- Alle Comb MPI Benchmarks auf Mogon abgeschlossen. ---
+Die Ergebnisse befinden sich in: /home/lemter/comb/run_mpi/results_mpi
+Die Job-Ausgaben (stdout/stderr) sind in: /home/lemter/comb/run_mpi/log/comb_benchmark_lemter.%j.out(.err)

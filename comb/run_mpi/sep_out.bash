@@ -1,0 +1,1 @@
+../scripts/sep_out.bash

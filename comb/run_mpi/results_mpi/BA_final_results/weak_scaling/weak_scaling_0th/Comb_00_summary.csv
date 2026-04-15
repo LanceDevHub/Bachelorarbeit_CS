@@ -1,0 +1,72 @@
+Comb version 0.3.1
+Args  /home/lemter/comb/run_mpi/comb;2048_2048_1024;-divide;4_4_2;-periodic;1_1_1;-ghost;1_1_1;-vars;3;-cycles;1000;-comm;cutoff;250;-exec;enable;omp;-omp_threads;2;-comm;enable;mpi;-comm;enable;mpi_persistent;-comm;enable;mpi_partitioned;-comm;disallow;per_message_pack_fusing;-comm;disallow;message_group_pack_fusing;-exec;enable;omp;-exec;disable;seq
+Started rank 0 of 32
+Node cpu0635
+Compiler "/apps/easybuild/core/software/OpenMPI/5.0.3-GCC-13.3.0/bin/mpicxx"
+OMP num threads     2
+OMP thread map      0;1
+Cart coords         0        0        0
+Message policy cutoff 250
+Post Recv using wait_all method
+Post Send using wait_all method
+Wait Recv using wait_all method
+Wait Send using wait_all method
+Num cycles       1000
+Num vars            3
+ghost_widths        1        1        1
+sizes            2048     2048     1024
+divisions           4        4        2
+periodic            1        1        1
+division map
+map                 0        0        0
+map               512      512      512
+map              1024     1024     1024
+map              1536     1536         
+map              2048     2048         
+Starting test memcpy omp dst Host src Host
+                       ,    number,  average(s),      min(s),      max(s)
+copy_sync-3-135796744-8,     32000, 1.399123053, 0.271579839, 1.945362105
+Starting test Comm mock Mesh omp Host Buffers omp Host omp Host
+          ,    number,  average(s),      min(s),      max(s)
+pre-comm  ,     32000, 1.340331659, 0.158063244, 1.414621487
+post-recv ,     32000, 0.001428560, 0.000061879, 0.008596018
+post-send ,     32000, 0.074715873, 0.010403851, 0.092503583
+wait-recv ,     32000, 0.059142970, 0.008818881, 0.072003944
+wait-send ,     32000, 0.001407801, 0.000144291, 0.003213380
+post-comm ,     32000, 1.351064798, 0.159092769, 1.418564913
+start-up  ,        32, 1.679136378, 1.671220008, 1.687216507
+bench-comm,        32, 2845.615585356, 2845.615544160, 2845.615616027
+Starting test Comm mpi Mesh omp Host Buffers omp Host omp Host
+          ,    number,  average(s),      min(s),      max(s)
+pre-comm  ,     32000, 1.348349039, 1.306239849, 1.373603319
+post-recv ,     32000, 0.001191961, 0.000021720, 0.007995178
+post-send ,     32000, 0.045704021, 0.015778878, 0.074172235
+wait-recv ,     32000, 0.111437318, 0.053119516, 0.185426357
+wait-send ,     32000, 0.002763285, 0.000014177, 0.007466691
+post-comm ,     32000, 1.362002931, 1.293592167, 1.391306945
+start-up  ,        32, 1.562040165, 1.543574438, 1.567686243
+bench-comm,        32, 2871.503579648, 2871.503548549, 2871.503597298
+Starting test Comm mpi_persistent Mesh omp Host Buffers omp Host omp Host
+                       ,    number,  average(s),      min(s),      max(s)
+init-persistent-comm   ,        32, 0.002925188, 0.000030241, 0.015969471
+pre-comm               ,     32000, 1.351431156, 1.303901070, 1.376098547
+post-recv              ,     32000, 0.000021700, 0.000008520, 0.000117333
+post-send              ,     32000, 0.039349478, 0.015502585, 0.061357890
+wait-recv              ,     32000, 0.108866585, 0.059595110, 0.190625363
+wait-send              ,     32000, 0.000017161, 0.000002444, 0.000056780
+post-comm              ,     32000, 1.364217800, 1.303450596, 1.390350199
+cleanup-persistent-comm,        32, 0.001725031, 0.000026959, 0.005335845
+start-up               ,        32, 1.560924869, 1.552885656, 1.565004030
+bench-comm             ,        32, 2863.952119110, 2863.952099899, 2863.952130699
+Starting test Comm mpi_partitioned Mesh omp Host Buffers omp Host omp Host
+                        ,    number,  average(s),      min(s),      max(s)
+init-partitioned-commm  ,        32, 0.002493130, 0.000080876, 0.015813447
+pre-comm                ,     32000, 1.350386400, 1.286152530, 1.374574523
+post-recv               ,     32000, 0.000040522, 0.000008520, 0.000126761
+post-send               ,     32000, 0.041236944, 0.017309929, 0.064908740
+wait-recv               ,     32000, 0.107543755, 0.057541783, 0.199733394
+wait-send               ,     32000, 0.000593484, 0.000002863, 0.024681497
+post-comm               ,     32000, 1.363349562, 1.250453560, 1.390254590
+cleanup-partitioned-comm,        32, 0.001846439, 0.000021790, 0.006114572
+start-up                ,        32, 1.561307570, 1.547324842, 1.570489464
+bench-comm              ,        32, 2863.221819051, 2863.221800906, 2863.221830728

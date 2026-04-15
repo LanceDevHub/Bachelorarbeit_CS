@@ -1,0 +1,1 @@
+../scripts/focused_umr_tests.bash

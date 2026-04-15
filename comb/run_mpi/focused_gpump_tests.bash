@@ -1,0 +1,1 @@
+../scripts/focused_gpump_tests.bash

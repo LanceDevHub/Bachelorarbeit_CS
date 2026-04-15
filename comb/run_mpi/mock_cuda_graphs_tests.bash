@@ -1,0 +1,1 @@
+../scripts/mock_cuda_graphs_tests.bash

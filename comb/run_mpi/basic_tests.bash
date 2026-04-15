@@ -1,0 +1,1 @@
+../scripts/basic_tests.bash

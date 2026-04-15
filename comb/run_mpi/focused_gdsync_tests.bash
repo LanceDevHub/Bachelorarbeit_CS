@@ -1,0 +1,1 @@
+../scripts/focused_gdsync_tests.bash

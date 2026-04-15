@@ -1,0 +1,18 @@
+===== Halo Benchmark (1D Ring, 2 Neighbours, AVG over 5 runs) =====
+# Nachrichtengroesse pro Message: 384.00 kB
+
+Ranks                 : 1024
+Cells per message     : 16384
+Variables per cell    : 3
+Doubles per message   : 49152
+Bytes per message     : 393216
+Iterations            : 1000
+
+Non-blocking (Isend/Irecv):
+  Total time [s]      : min = 2.334420e-01  avg = 2.588095e-01  max = 2.898691e-01
+
+Persistent (Send_init/Startall):
+  Total time [s]      : min = 2.176178e-01  avg = 2.408889e-01  max = 2.684127e-01
+
+Speedup (based on AVG time):
+  Speedup             : 1.082 x

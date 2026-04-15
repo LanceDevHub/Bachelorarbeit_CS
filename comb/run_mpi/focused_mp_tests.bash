@@ -1,0 +1,1 @@
+../scripts/focused_mp_tests.bash

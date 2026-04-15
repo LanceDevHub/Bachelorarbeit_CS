@@ -1,0 +1,1 @@
+../scripts/mock_tests.bash

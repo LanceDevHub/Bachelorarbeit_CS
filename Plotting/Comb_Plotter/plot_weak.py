@@ -1,0 +1,77 @@
+import re
+from pathlib import Path
+import matplotlib.pyplot as plt
+
+
+log_dir = Path("Comb_Plotter/weak_logs")
+
+pattern_ranks = re.compile(r"MPI ranks \(processes\):\s+(\d+)")
+
+block_std = re.compile(
+    r"Starting test Comm mpi Mesh.*?(^bench-comm\s*,\s*\d+\s*,\s*([0-9.]+))",
+    re.M | re.S,
+)
+block_pers = re.compile(
+    r"Starting test Comm mpi_persistent Mesh.*?(^bench-comm\s*,\s*\d+\s*,\s*([0-9.]+))",
+    re.M | re.S,
+)
+block_part = re.compile(
+    r"Starting test Comm mpi_partitioned Mesh.*?(^bench-comm\s*,\s*\d+\s*,\s*([0-9.]+))",
+    re.M | re.S,
+)
+
+ranks = []
+times_std = []
+times_pers = []
+times_part = []
+
+for logfile in sorted(log_dir.glob("*.txt")):
+    text = logfile.read_text()
+
+    m_ranks = pattern_ranks.search(text)
+    if not m_ranks:
+        continue
+
+    m_std = block_std.search(text)
+    m_pers = block_pers.search(text)
+    m_part = block_part.search(text)
+
+    if not (m_std and m_pers and m_part):
+        continue
+
+    ranks.append(int(m_ranks.group(1)))
+    times_std.append(float(m_std.group(2)))
+    times_pers.append(float(m_pers.group(2)))
+    times_part.append(float(m_part.group(2)))
+
+print("ranks      :", ranks)
+print("std        :", times_std)
+print("persistent :", times_pers)
+print("partitioned:", times_part)
+
+
+
+plt.figure()
+
+plt.plot(ranks, times_std,  marker="o", color="tab:blue",  label="Non-Blocking")
+plt.plot(ranks, times_pers, marker="s", color="tab:orange", label="Persistent")
+plt.plot(ranks, times_part, marker="^", color="tab:green", label="Partitioned")
+
+xticks = [2**i for i in range(5, 11)]  # 32 .. 4096
+plt.xscale("log", base=2)
+plt.xticks(xticks, [str(x) for x in xticks])
+
+border = False
+if (border):
+    plt.xlim(xticks[0] / 2, xticks[-1] * 2)
+
+plt.xlabel("Anzahl Prozesse")
+plt.ylabel("Zeit [s]")
+# plt.title("Weak Scaling")
+
+plt.grid(True, which="both", linestyle="--", alpha=0.5)
+plt.legend()
+plt.tight_layout()
+
+plt.savefig("weak_scaling_bench_comm.png", dpi=200)
+# plt.show()

@@ -1,0 +1,99 @@
+# ===== PARAMETERS =====
+# --- System/Parallelisierung ---
+# MPI ranks (processes):           512
+# Nodes:                           16
+# MPI ranks per node:              32
+# OpenMP threads per rank:         2
+# OpenMP threads per node:         64
+# Total threads (ranks*threads):   1024
+# Total CPU-cores (Slurm allocation): 1024
+# --- Grid-Setup ---
+# Grid total:          4096_4096_4096
+# Grid per process:    512_512_512
+# Grid division:       8_8_8
+# Vars per field:      3
+# --- Benchmark ---
+# Cycles:              1000
+#
+### Test-Variante: seq Host Buffers seq Host seq Host
+# -- MPI Standard --
+
+# -- MPI Persistent --
+
+# -- MPI Partitioned --
+
+--------------------------------------------
+### Test-Variante: omp Host Buffers seq Host seq Host
+# -- MPI Standard --
+
+# -- MPI Persistent --
+
+# -- MPI Partitioned --
+
+--------------------------------------------
+### Test-Variante: omp Host Buffers omp Host seq Host
+# -- MPI Standard --
+
+# -- MPI Persistent --
+
+# -- MPI Partitioned --
+
+--------------------------------------------
+### Test-Variante: omp Host Buffers omp Host omp Host
+# -- MPI Standard --
+Starting test Comm mpi Mesh omp Host Buffers omp Host omp Host
+          ,    number,  average(s),      min(s),      max(s)
+pre-comm  ,    512000, 0.964110047, 0.273933247, 1.404146707
+post-recv ,    512000, 0.000052602, 0.000010476, 0.007441131
+post-send ,    512000, 0.026631587, 0.007420878, 0.241168199
+wait-recv ,    512000, 0.821330282, 0.039059343, 2.241849937
+wait-send ,    512000, 0.000312243, 0.000006215, 0.031934438
+post-comm ,    512000, 1.014681765, 0.208273465, 1.427443977
+start-up  ,       512, 1.562804918, 1.535396627, 1.574374475
+bench-comm,       512, 2827.705686328, 2827.705570946, 2827.705847976
+
+# -- MPI Persistent --
+Starting test Comm mpi_persistent Mesh omp Host Buffers omp Host omp Host
+                       ,    number,  average(s),      min(s),      max(s)
+init-persistent-comm   ,       512, 0.000071491, 0.000022699, 0.001712148
+pre-comm               ,    512000, 0.962346169, 0.325095916, 1.399832810
+post-recv              ,    512000, 0.000034501, 0.000005657, 0.000185079
+post-send              ,    512000, 0.025761016, 0.007509310, 0.072274953
+wait-recv              ,    512000, 0.792058678, 0.030848541, 1.955890956
+wait-send              ,    512000, 0.000015522, 0.000003352, 0.005709987
+post-comm              ,    512000, 1.022798043, 0.398383592, 1.426711112
+cleanup-persistent-comm,       512, 0.000051683, 0.000014178, 0.002490529
+start-up               ,       512, 1.558993831, 1.540731117, 1.569383082
+bench-comm             ,       512, 2803.545210547, 2803.545020125, 2803.545295141
+
+# -- MPI Partitioned --
+Starting test Comm mpi_partitioned Mesh omp Host Buffers omp Host omp Host
+                        ,    number,  average(s),      min(s),      max(s)
+init-partitioned-commm  ,       512, 0.000102238, 0.000083320, 0.000672289
+pre-comm                ,    512000, 0.964970388, 0.321666764, 1.396901082
+post-recv               ,    512000, 0.000057777, 0.000008101, 0.000604126
+post-send               ,    512000, 0.026151136, 0.008155604, 0.068024538
+wait-recv               ,    512000, 0.792194826, 0.038276039, 1.934638447
+wait-send               ,    512000, 0.000122910, 0.000003282, 0.038053159
+post-comm               ,    512000, 1.021388689, 0.417255647, 1.424824534
+cleanup-partitioned-comm,       512, 0.000044709, 0.000012780, 0.002407209
+start-up                ,       512, 1.559893669, 1.543369006, 1.570792736
+bench-comm              ,       512, 2805.463531331, 2805.463482029, 2805.463677252
+
+--------------------------------------------
+# --- Benchmark-Bezeichnungen: Bedeutung ---
+# Format: seq/omp Host Buffers seq/omp Host seq/omp Host
+#
+# - Erster Begriff ("seq/omp Host Buffers"): 
+#     Speicherpuffer im Hauptspeicher ("Host")
+#     Verarbeitung entweder sequentiell ("seq") oder mit OpenMP ("omp")
+#
+# - Zweiter und dritter Begriff ("seq/omp Host ..."): 
+#     Packen/Senden bzw. Entpacken/Empfangen der Daten
+#     "seq": sequentiell (ein Thread)
+#     "omp": OpenMP-parallel (mehrere Threads)
+#
+# - Die Kombinationen zeigen, wie Datenpuffer und (De-)Serialisierung 
+#   verteilt und parallelisiert werden.
+# - Erleichtert das schnelle Erkennen des Kommunikations- und 
+#   Parallelisierungsschemas im Test.
