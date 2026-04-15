@@ -1,0 +1,19 @@
+*.pyc
+*.o
+*.a
+*.exe
+*.gch
+
+# editor directories
+.idea/
+.clangd/
+.vscode/
+.cache/
+
+# build directories
+build/
+build-*/
+cmake-build-*/
+docker-*-build/
+/Debug/
+./extern/googletest/*
